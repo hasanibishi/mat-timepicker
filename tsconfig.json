@@ -6,5 +6,18 @@
 */
 {
   "files": [],
-  "references": []
+  "references": [
+    {
+      "path": "./projects/mat-timepicker/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/mat-timepicker/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/mat-timepicker-example/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/mat-timepicker-example/tsconfig.spec.json"
+    }
+]
 }
