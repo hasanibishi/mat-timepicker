@@ -1,0 +1,36 @@
+.content {
+    display: grid;
+    background: #eee;
+    width: 200px;
+    display: block;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px -1px rgb(0 0 0 / 20%), 0 4px 5px 0 rgb(0 0 0 / 14%), 0 1px 10px 0 rgb(0 0 0 / 12%);
+    background-color: #fff;
+    color: rgba(0, 0, 0, 0.87);
+
+    > div {
+        display: grid;
+        justify-items: center;
+    }
+}
+
+input {
+    border: none;
+    border-bottom: solid 1px;
+    height: 20px;
+    text-align: center;
+
+    &:focus {
+        outline: none !important;
+    }
+}
+
+button {
+    padding: 0;
+    min-width: 0;
+    width: 25px !important;
+    height: 25px !important;
+    flex-shrink: 0;
+    line-height: 25px !important;
+    border-radius: 50%;
+}

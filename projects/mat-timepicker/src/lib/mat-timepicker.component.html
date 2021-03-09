@@ -1,6 +1,13 @@
-<mat-form-field class="example-full-width">
-  <mat-label>Favorite food</mat-label>
+<mat-form-field>
+  <mat-label>Choose a time</mat-label>
   <input matInput
-         placeholder="Ex. Pizza"
-         value="Sushi">
+         readonly>
+  <button mat-icon-button
+          matSuffix
+          (click)="togglePicker();">
+    <mat-icon>access_time</mat-icon>
+  </button>
 </mat-form-field>
+<ng-container *ngIf="timePicker">
+  <mat-timepicker-content></mat-timepicker-content>
+</ng-container>
