@@ -1,29 +1,46 @@
 <div class="content">
     <br>
-    <div>
-        <div style="display: flex; gap: 20px;">
-            <button mat-icon-button>
+    <div class="controls">
+        <div class="buttons">
+            <button mat-icon-button
+                    (click)="increaseHours()">
                 <mat-icon>expand_less</mat-icon>
             </button>
-            <button mat-icon-button>
+            <button mat-icon-button
+                    (click)="increaseMinutes()">
                 <mat-icon>expand_less</mat-icon>
             </button>
         </div>
         <br>
-        <div style="display: grid;grid-template-columns: 20px 5px 20px;grid-gap: 10px; align-items: center">
-            <input />
+        <div class="inputs">
+            <input type="number"
+                   [ngModel]="hours | number: '2.'"
+                   readonly />
             <span>:</span>
-            <input />
+            <input type="number"
+                   [ngModel]="minutes | number: '2.'"
+                   readonly />
         </div>
         <br>
-        <div style="display: flex; gap: 20px;">
-            <button mat-icon-button>
+        <div class="buttons">
+            <button mat-icon-button
+                    (click)="decreaseHours()">
                 <mat-icon>expand_more</mat-icon>
             </button>
-            <button mat-icon-button>
+            <button mat-icon-button
+                    (click)="decreaseMinutes()">
                 <mat-icon>expand_more</mat-icon>
             </button>
         </div>
+    </div>
+    <br>
+    <br>
+    <div class="doneBtn">
+        <button class="mat-stroked-button mat-primary"
+                mat-icon-button
+                (click)="setTime()">
+            <mat-icon>done</mat-icon>
+        </button>
     </div>
     <br>
 </div>

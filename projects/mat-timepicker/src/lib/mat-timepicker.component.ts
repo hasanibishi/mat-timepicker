@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { MatTimepickerContentComponent } from './mat-timepicker-content/mat-timepicker-content.component';
+import {Component, OnInit} from '@angular/core';
+import {MatTimepickerService} from '../public-api';
 
 @Component({
   selector: 'mat-timepicker',
@@ -8,13 +8,20 @@ import { MatTimepickerContentComponent } from './mat-timepicker-content/mat-time
 })
 export class MatTimepickerComponent implements OnInit {
   timePicker = false;
+  time: string;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(
+    private matService: MatTimepickerService
+  ) {
+    this.matService.timeObs$.subscribe(resp => this.time = resp)
+    this.matService.toggleTimePickerObs$.subscribe(resp => this.timePicker = resp)
   }
 
-  togglePicker() {
-    this.timePicker = !this.timePicker;
+  ngOnInit(): void {
+
+  }
+
+  openPicker() {
+    this.timePicker ? this.matService.setToggleTimePicker(false) : this.matService.setToggleTimePicker(true)
   }
 }

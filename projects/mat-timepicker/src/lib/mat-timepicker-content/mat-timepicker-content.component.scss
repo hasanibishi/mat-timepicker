@@ -1,3 +1,15 @@
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
 .content {
     display: grid;
     background: #eee;
@@ -8,29 +20,53 @@
     background-color: #fff;
     color: rgba(0, 0, 0, 0.87);
 
-    > div {
+    .controls {
         display: grid;
         justify-items: center;
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+
+            button {
+                padding: 0;
+                min-width: 0;
+                width: 25px !important;
+                height: 25px !important;
+                flex-shrink: 0;
+                line-height: 25px !important;
+                border-radius: 50%;
+            }
+        }
+
+        .inputs {
+            display: grid;
+            grid-template-columns: 20px 5px 20px;
+            grid-gap: 10px;
+            align-items: center;
+
+            input {
+                border: none;
+                border-bottom: solid 1px;
+                height: 20px;
+                text-align: center;
+
+                &:focus {
+                    outline: none !important;
+                }
+            }
+        }
     }
-}
 
-input {
-    border: none;
-    border-bottom: solid 1px;
-    height: 20px;
-    text-align: center;
+    .doneBtn {
+        text-align: right;
+        margin-right: 10px;
 
-    &:focus {
-        outline: none !important;
+        button {
+            min-width: 63px !important;
+            height: 35px !important;
+            line-height: 0 !important;
+            border-radius: 4px !important;
+        }
     }
-}
-
-button {
-    padding: 0;
-    min-width: 0;
-    width: 25px !important;
-    height: 25px !important;
-    flex-shrink: 0;
-    line-height: 25px !important;
-    border-radius: 50%;
 }
