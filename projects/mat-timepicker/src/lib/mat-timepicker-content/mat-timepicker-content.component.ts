@@ -46,7 +46,6 @@ export class MatTimepickerContentComponent implements OnInit {
     if (minute.length === 1)
       minute = `0${minute}`;
 
-
     let time = `${hour}:${minute}`;
     this.matService.setTime(time);
     this.matService.setToggleTimePicker(false);

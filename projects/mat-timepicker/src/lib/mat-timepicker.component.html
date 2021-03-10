@@ -2,7 +2,8 @@
   <mat-label>Choose a time</mat-label>
   <input matInput
          readonly
-         [(ngModel)]="time">
+         [(ngModel)]="time"
+         (click)="openPicker()">
   <button mat-icon-button
           matSuffix
           (click)="openPicker()">
