@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {MatTimepickerService} from '../public-api';
+import { Component, OnInit } from '@angular/core';
+import { MatTimepickerService } from '../public-api';
 
 @Component({
   selector: 'mat-timepicker',
@@ -17,7 +17,7 @@ export class MatTimepickerComponent implements OnInit {
     this.matService.toggleTimePickerObs$.subscribe(resp => this.timePicker = resp)
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
 
   }
 
