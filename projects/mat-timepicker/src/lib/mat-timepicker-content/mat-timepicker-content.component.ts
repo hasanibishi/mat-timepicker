@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {MatTimepickerService} from '../mat-timepicker.service';
 
 @Component({
@@ -6,7 +6,7 @@ import {MatTimepickerService} from '../mat-timepicker.service';
   templateUrl: './mat-timepicker-content.component.html',
   styleUrls: ['./mat-timepicker-content.component.scss']
 })
-export class MatTimepickerContentComponent implements OnInit {
+export class MatTimepickerContentComponent implements OnInit, OnDestroy {
 
   hours: number;
   minutes: number;
@@ -14,11 +14,17 @@ export class MatTimepickerContentComponent implements OnInit {
   constructor(
     private matService: MatTimepickerService
   ) {
-    this.matService.hoursObs$.subscribe(h => {h ? this.hours = h : this.hours = 0});
-    this.matService.minutesObs$.subscribe(m => {m ? this.minutes = m : this.minutes = 0});
+    this.matService.initialTimeObs$.subscribe(time => {
+      this.matService.hoursObs$.subscribe(h => {(h || h === 0) ? this.hours = h : this.hours = +time.split(':')[0]});
+      this.matService.minutesObs$.subscribe(m => {(m || m === 0) ? this.minutes = m : this.minutes = +time.split(':')[1]});
+    });
   }
 
   ngOnInit(): void {
+  }
+
+  ngOnDestroy() {
+    this.matService.setToggleTimePicker(false);
   }
 
   increaseHours() {

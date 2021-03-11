@@ -6,6 +6,9 @@ import {BehaviorSubject} from 'rxjs';
 })
 export class MatTimepickerService {
 
+  private initialTime = new BehaviorSubject('');
+  initialTimeObs$ = this.initialTime.asObservable();
+
   private time = new BehaviorSubject('');
   timeObs$ = this.time.asObservable();
 
@@ -19,6 +22,10 @@ export class MatTimepickerService {
   minutesObs$ = this.minutes.asObservable();
 
   constructor() { }
+
+  setInitialTime(initTime: string) {
+    this.initialTime.next(initTime);
+  }
 
   increaseHours(hour: number) {
     if (hour === 23)
