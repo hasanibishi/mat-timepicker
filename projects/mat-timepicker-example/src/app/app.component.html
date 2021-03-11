@@ -1,6 +1,8 @@
-<div style="margin: 100px;">
+<br><br><br>
+<div style="margin: 100px;"
+     *ngIf="show">
 
-    <mat-timepicker (updateValue)="setValue($event)"
-                    [selectedTime]="time"></mat-timepicker>
+     <mat-timepicker (updateValue)="setValue($event)"
+                     [selectedTime]="time"></mat-timepicker>
 
 </div>
