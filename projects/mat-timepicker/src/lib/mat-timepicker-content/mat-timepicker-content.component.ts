@@ -15,8 +15,6 @@ export class MatTimepickerContentComponent implements OnInit, OnDestroy {
     private matService: MatTimepickerService
   ) {
     this.matService.initialTimeObs$.subscribe(time => {
-      console.log(time);
-
       this.matService.hoursObs$.subscribe(h => {(h || h === 0) ? this.hours = h : this.hours = +time.split(':')[0]});
       this.matService.minutesObs$.subscribe(m => {(m || m === 0) ? this.minutes = m : this.minutes = +time.split(':')[1]});
     });

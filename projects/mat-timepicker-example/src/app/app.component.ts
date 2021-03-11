@@ -7,7 +7,7 @@ import {Component} from '@angular/core';
 })
 export class AppComponent {
   title = 'mat-timepicker-example';
-  time = '16:34';
+  time = '';
   show = true;
 
   setValue(event: any) {
