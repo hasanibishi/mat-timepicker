@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatTimepickerService } from '../public-api';
+import {Component, EventEmitter, Input, OnInit, Output, SimpleChange} from '@angular/core';
+import {MatTimepickerService} from '../public-api';
 
 @Component({
   selector: 'mat-timepicker',
@@ -10,6 +10,9 @@ export class MatTimepickerComponent implements OnInit {
   timePicker = false;
   time: string;
 
+  @Input() selectedTime: any;
+  @Output() updateValue: EventEmitter<any> = new EventEmitter();
+
   constructor(
     private matService: MatTimepickerService
   ) {
@@ -18,7 +21,11 @@ export class MatTimepickerComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.matService.timeObs$.subscribe(resp => this.updateValue.emit(resp))
+  }
 
+  ngOnChanges(change: SimpleChange) {
+    this.time = change['selectedTime'].currentValue;
   }
 
   openPicker() {
