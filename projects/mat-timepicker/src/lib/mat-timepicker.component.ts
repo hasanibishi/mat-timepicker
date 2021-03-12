@@ -9,45 +9,36 @@ import {MatTimepickerService} from '../public-api';
 export class MatTimepickerComponent implements OnInit, OnDestroy {
   timePicker = false;
   time: string;
-
   @Input() selectedTime: any;
-  @Input() selectedTimeId: number;
 
   @Output() updateValue: EventEmitter<any> = new EventEmitter();
 
   constructor(
     private matService: MatTimepickerService
   ) {
-    this.matService.timeObs$.subscribe((resp: any) => {
-      let [value, id] = resp;
-      if (this.selectedTimeId === id)
-        this.time = value;
-    });
-
-    this.matService.toggleTimePickerObs$.subscribe((resp: any) => {
-      let [value, id] = resp;
-      if (this.selectedTimeId === id)
-        this.timePicker = value;
-    });
+    this.matService.timeObs$.subscribe(resp => {this.time = resp});
+    this.matService.toggleTimePickerObs$.subscribe(resp => this.timePicker = resp);
   }
 
   ngOnInit() {
-    this.matService.timeObs$.subscribe((resp: any) => {
-      let [value, id] = resp;
-      if (this.selectedTimeId === id)
-        this.updateValue.emit(value)
+    this.matService.timeObs$.subscribe(resp => {
+      this.updateValue.emit(resp)
     });
 
-    this.time = this.time ? this.time : this.selectedTime;
+    this.time = this.selectedTime;
+    this.matService.setInitialTime(this.time);
   }
 
+  // ngOnChanges(change: SimpleChange) {
+  //   this.time = change['selectedTime'].currentValue ? change['selectedTime'].currentValue : '00:00';
+  //   this.matService.setInitialTime(this.time);
+  // }
+
   ngOnDestroy() {
-    this.matService.setToggleTimePicker(false, this.selectedTimeId);
+    this.matService.setToggleTimePicker(false);
   }
 
   togglePicker() {
-    this.matService.setTimeId(this.selectedTimeId);
-    this.matService.setInitialTime(this.selectedTime ? this.selectedTime : '00:00', this.selectedTimeId);
-    this.timePicker ? this.matService.setToggleTimePicker(false, this.selectedTimeId) : this.matService.setToggleTimePicker(true, this.selectedTimeId);
+    this.timePicker ? this.matService.setToggleTimePicker(false) : this.matService.setToggleTimePicker(true);
   }
 }

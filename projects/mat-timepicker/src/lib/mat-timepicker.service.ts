@@ -6,80 +6,71 @@ import {BehaviorSubject} from 'rxjs';
 })
 export class MatTimepickerService {
 
-  timeId = new BehaviorSubject(0);
-  // timeId$ = this.timeId.asObservable();
-
-  private initialTime = new BehaviorSubject(['', 0]);
+  private initialTime = new BehaviorSubject('');
   initialTimeObs$ = this.initialTime.asObservable();
 
-  private time = new BehaviorSubject(['', 0]);
+  private time = new BehaviorSubject('');
   timeObs$ = this.time.asObservable();
 
-  private toggleTimePicker = new BehaviorSubject([false, 0]);
+  private toggleTimePicker = new BehaviorSubject(false);
   toggleTimePickerObs$ = this.toggleTimePicker.asObservable();
 
-  private hours = new BehaviorSubject([null, 0]);
+  private hours = new BehaviorSubject(0);
   hoursObs$ = this.hours.asObservable();
 
-  private minutes = new BehaviorSubject([null, 0]);
+  private minutes = new BehaviorSubject(0);
   minutesObs$ = this.minutes.asObservable();
 
-  constructor() {
-    console.log(this.timeId.value);
+  constructor() { }
+
+  setInitialTime(initTime: string) {
+    this.initialTime.next(initTime);
   }
 
-  setTimeId(id: number) {
-    this.timeId.next(id);
-  }
-
-  setInitialTime(initTime: string, id: number) {
-    this.initialTime.next([initTime, id]);
-  }
-
-  increaseHours(hour: number, id: number) {
+  increaseHours(hour: number) {
     if (hour === 23)
       hour = 0;
 
     else if (hour < 23)
       hour++
 
-    this.hours.next([hour, id]);
+    this.hours.next(hour);
   }
 
-  decreaseHours(hour: number, id: number) {
+  decreaseHours(hour: number) {
     if (hour === 0)
       hour = 23;
     else if (hour > 0)
       hour--;
 
-    this.hours.next([hour, id]);
+    this.hours.next(hour);
   }
 
-  increaseMinutes(minute: number, id: number) {
+  increaseMinutes(minute: number) {
     if (minute === 59)
       minute = 0;
 
     else if (minute < 59)
       minute++;
 
-    this.minutes.next([minute, id]);
+    this.minutes.next(minute);
   }
 
-  decreaseMinutes(minute: number, id: number) {
+  decreaseMinutes(minute: number) {
     if (minute === 0)
       minute = 59;
 
     else if (minute > 0)
       minute--;
 
-    this.minutes.next([minute, id]);
+    this.minutes.next(minute);
   }
 
-  setTime(time: string, id: number) {
-    this.time.next([time, id]);
+  setTime(time: string) {
+    this.time.next(time);
   }
 
-  setToggleTimePicker(toggle: boolean, id: number) {
-    this.toggleTimePicker.next([toggle, id]);
+  setToggleTimePicker(toggle: boolean) {
+    this.toggleTimePicker.next(toggle);
   }
 }
