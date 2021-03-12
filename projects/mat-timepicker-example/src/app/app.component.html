@@ -1,14 +1,7 @@
-<br><br><br>
-<button (click)="show = !show">SHOW</button>
+<div style="display: flex; gap: 100px; margin: 100px;">
+     <mat-timepicker (updateValue)="setValue($event)"
+                     [time]="initTime"></mat-timepicker>
 
-<div *ngIf="show"
-     style="display: flex; gap: 200px; justify-content: center;">
-     <div *ngFor="let itm of data">
-          <mat-timepicker (updateValue)="setValue($event)"
-                          [name]="itm.id"
-                          [id]="itm.id"
-                          [selectedTime]="itm.time"
-                          [selectedTimeId]="itm.id"></mat-timepicker>
+     <h1>{{newValue}}</h1>
 
-     </div>
 </div>

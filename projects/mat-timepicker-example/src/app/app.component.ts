@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,16 +6,12 @@ import {Component} from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'mat-timepicker-example';
 
-  show = true;
-
-  data = [{id: 1, time: '02:10'}, {id: 2, time: '12:35'}, {id: 3, time: '22:16'}];
+  initTime = '11:57';
+  newValue: string;
 
   setValue(event: any) {
-
+    if (event)
+      this.newValue = event;
   }
-
-
-
 }

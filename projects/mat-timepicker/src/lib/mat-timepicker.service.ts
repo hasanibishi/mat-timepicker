@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-import {BehaviorSubject} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,10 +15,10 @@ export class MatTimepickerService {
   private toggleTimePicker = new BehaviorSubject(false);
   toggleTimePickerObs$ = this.toggleTimePicker.asObservable();
 
-  private hours = new BehaviorSubject(0);
+  private hours = new BehaviorSubject(null);
   hoursObs$ = this.hours.asObservable();
 
-  private minutes = new BehaviorSubject(0);
+  private minutes = new BehaviorSubject(null);
   minutesObs$ = this.minutes.asObservable();
 
   constructor() { }

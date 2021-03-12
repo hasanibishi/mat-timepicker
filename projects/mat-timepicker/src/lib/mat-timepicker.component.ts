@@ -1,5 +1,5 @@
-import {Component, EventEmitter, Input, OnDestroy, OnInit, Output, SimpleChange} from '@angular/core';
-import {MatTimepickerService} from '../public-api';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, SimpleChange } from '@angular/core';
+import { MatTimepickerService } from '../public-api';
 
 @Component({
   selector: 'mat-timepicker',
@@ -8,15 +8,15 @@ import {MatTimepickerService} from '../public-api';
 })
 export class MatTimepickerComponent implements OnInit, OnDestroy {
   timePicker = false;
-  time: string;
-  @Input() selectedTime: any;
+  selectedTime: string;
 
+  @Input() time: any;
   @Output() updateValue: EventEmitter<any> = new EventEmitter();
 
   constructor(
     private matService: MatTimepickerService
   ) {
-    this.matService.timeObs$.subscribe(resp => {this.time = resp});
+    this.matService.timeObs$.subscribe(resp => { this.selectedTime = resp });
     this.matService.toggleTimePickerObs$.subscribe(resp => this.timePicker = resp);
   }
 
@@ -24,15 +24,12 @@ export class MatTimepickerComponent implements OnInit, OnDestroy {
     this.matService.timeObs$.subscribe(resp => {
       this.updateValue.emit(resp)
     });
-
-    this.time = this.selectedTime;
-    this.matService.setInitialTime(this.time);
   }
 
-  // ngOnChanges(change: SimpleChange) {
-  //   this.time = change['selectedTime'].currentValue ? change['selectedTime'].currentValue : '00:00';
-  //   this.matService.setInitialTime(this.time);
-  // }
+  ngOnChanges(change: SimpleChange) {
+    this.selectedTime = change['time'].currentValue ? change['time'].currentValue : '00:00';
+    this.matService.setInitialTime(this.selectedTime);
+  }
 
   ngOnDestroy() {
     this.matService.setToggleTimePicker(false);
