@@ -9,6 +9,7 @@ import {MatTimepickerService} from '../public-api';
 export class MatTimepickerComponent implements OnInit, OnDestroy {
   timePicker = false;
   time: string;
+
   @Input() selectedTime: any;
 
   @Output() updateValue: EventEmitter<any> = new EventEmitter();
@@ -21,14 +22,10 @@ export class MatTimepickerComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.matService.timeObs$.subscribe(resp => {
-      this.updateValue.emit(resp)
-    });
+    this.matService.timeObs$.subscribe(resp => {this.updateValue.emit(resp)});
   }
 
   ngOnChanges(change: SimpleChange) {
-    console.log(change);
-
     this.time = change['selectedTime'].currentValue ? change['selectedTime'].currentValue : '00:00';
     this.matService.setInitialTime(this.time);
   }
