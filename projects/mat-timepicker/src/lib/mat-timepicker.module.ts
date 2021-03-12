@@ -19,8 +19,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule
   ],
   exports: [
-    MatTimepickerComponent,
-    MatTimepickerContentComponent
+    MatTimepickerComponent
   ]
 })
 export class MatTimepickerModule { }
