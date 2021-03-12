@@ -7,11 +7,17 @@ import {Component} from '@angular/core';
 })
 export class AppComponent {
   title = 'mat-timepicker-example';
-  time = '';
-  show = true;
+  time = '02:10';
 
   setValue(event: any) {
     if (event)
       console.log(event);
   }
+
+  chTime() {
+    this.time = Math.random().toString();
+  }
+
+
+
 }

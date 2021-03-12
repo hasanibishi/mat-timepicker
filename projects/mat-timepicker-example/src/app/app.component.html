@@ -1,8 +1,10 @@
 <br><br><br>
-<div style="margin: 100px;"
-     *ngIf="show">
 
+<div style="display: flex; gap: 200px; justify-content: center;">
      <mat-timepicker (updateValue)="setValue($event)"
                      [selectedTime]="time"></mat-timepicker>
 
 </div>
+
+
+<button (click)="chTime();">CH</button>

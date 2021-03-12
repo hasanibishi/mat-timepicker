@@ -15,13 +15,16 @@ export class MatTimepickerService {
   private toggleTimePicker = new BehaviorSubject(false);
   toggleTimePickerObs$ = this.toggleTimePicker.asObservable();
 
-  private hours = new BehaviorSubject(null);
+  private hours = new BehaviorSubject(0);
   hoursObs$ = this.hours.asObservable();
 
-  private minutes = new BehaviorSubject(null);
+  private minutes = new BehaviorSubject(0);
   minutesObs$ = this.minutes.asObservable();
 
-  constructor() { }
+  constructor() {
+    this.timeObs$.subscribe(console.log)
+    this.minutesObs$.subscribe(console.log)
+  }
 
   setInitialTime(initTime: string) {
     this.initialTime.next(initTime);
