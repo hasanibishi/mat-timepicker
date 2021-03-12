@@ -9,19 +9,16 @@ import {MatTimepickerService} from '../public-api';
 export class MatTimepickerComponent implements OnInit, OnDestroy {
   timePicker = false;
   time: string;
-
+  i = 0;
   @Input() public set selectedTime(time: string) {
-    this.properties.config = time;
-    console.log(time);
-
-    this.time = time ? time : '00:00';
-    this.matService.setInitialTime(this.time);
-  }
-  public get selectedTime() {
-    return this.properties.config;
+    if (this.i === 0) {
+      console.log(time);
+      this.i++;
+      this.time = time ? time : '00:00';
+      this.matService.setInitialTime(this.time);
+    }
   }
 
-  private properties: {config?: any} = {};
   @Output() updateValue: EventEmitter<any> = new EventEmitter();
 
   constructor(
