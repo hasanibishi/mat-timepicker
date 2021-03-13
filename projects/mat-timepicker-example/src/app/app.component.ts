@@ -8,10 +8,10 @@ import { Component } from '@angular/core';
 export class AppComponent {
 
   initTime = '11:57';
-  newValue: string;
+  newTime: string;
 
   setValue(event: any) {
     if (event)
-      this.newValue = event;
+      this.newTime = event;
   }
 }

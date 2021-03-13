@@ -1,27 +1,65 @@
-# MatTimepicker
+## Getting started
+```
+npm install --save mat-timepicker-hi
+```
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.5.
+## Setup
+```
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { MatTimepickerModule, } from 'mat-timepicker'
+import { AppComponent } from './app.component';
 
-## Development server
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    MatTimepickerModule,
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Using the component
+```
+<mat-timepicker (updateValue)="setValue($event)"
+                     [time]="initTime"></mat-timepicker>
+```
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
+import { Component } from '@angular/core';
 
-## Build
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
+})
+export class AppComponent {
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+  initTime = '11:57';
+  newTime: string;
 
-## Running unit tests
+  setValue(event: any) {
+    if (event)
+      this.newTime = event;
+  }
+}
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+#### @Input and @Output of mat-timepicker-hi
 
-## Running end-to-end tests
+| @Input        	| @Output      	| Type     	    |
+|-----------------|-----------------|---------------|
+| **time**        | (updateValue)  	| string        |
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
+## License
+MIT
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Author
+Hasan Ibishi
