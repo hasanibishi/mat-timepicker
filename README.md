@@ -1,3 +1,6 @@
+![Screenshot_1](https://user-images.githubusercontent.com/32700638/111035342-58470e80-841a-11eb-9060-706640bed0e9.png)
+
+
 ## Getting started
 ```
 npm install --save mat-timepicker-hi
