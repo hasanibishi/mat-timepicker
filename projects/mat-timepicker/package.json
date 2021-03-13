@@ -1,6 +1,12 @@
 {
   "name": "mat-timepicker-hi",
-  "version": "0.2.0",
+  "version": "0.2.3",
+  "author": "Hasan Ibishi",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hasanibishi/mat-timepicker"
+  },
   "peerDependencies": {
     "@angular/common": "^10.0.14",
     "@angular/core": "^10.0.14"

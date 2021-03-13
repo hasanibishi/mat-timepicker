@@ -1,24 +1,68 @@
-# MatTimepicker
+## Getting started
+```
+npm install --save mat-timepicker-hi
+```
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.14.
+## Setup
+```
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { MatTimepickerModule, } from 'mat-timepicker'
+import { AppComponent } from './app.component';
 
-## Code scaffolding
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    MatTimepickerModule,
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
 
-Run `ng generate component component-name --project mat-timepicker` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project mat-timepicker`.
-> Note: Don't forget to add `--project mat-timepicker` or else it will be added to the default project in your `angular.json` file. 
+## Using the component
+```
+<mat-timepicker (updateValue)="setValue($event)"
+                     [time]="initTime"></mat-timepicker>
+```
 
-## Build
 
-Run `ng build mat-timepicker` to build the project. The build artifacts will be stored in the `dist/` directory.
+```
+import { Component } from '@angular/core';
 
-## Publishing
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
+})
+export class AppComponent {
 
-After building your library with `ng build mat-timepicker`, go to the dist folder `cd dist/mat-timepicker` and run `npm publish`.
+  initTime = '11:57';
+  newTime: string;
 
-## Running unit tests
+  setValue(event: any) {
+    if (event)
+      this.newTime = event;
+  }
+}
+```
 
-Run `ng test mat-timepicker` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## @Input and @Output of mat-timepicker-hi
 
-## Further help
+| @Input        	| @Output      	| Type     	    |
+|-----------------|-----------------|---------------|
+| **time**        | (updateValue)  	| string        |
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+
+## License
+MIT
+
+
+## Author
+Hasan Ibishi
