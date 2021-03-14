@@ -19,7 +19,7 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    MatTimepickerModule,
+    MatTimepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
@@ -47,7 +47,7 @@ export class AppComponent {
   initTime = '11:57';
   newTime: string;
 
-  setValue(event: any) {
+  setValue(event: string) {
     if (event)
       this.newTime = event;
   }
