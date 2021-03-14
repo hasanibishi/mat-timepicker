@@ -1,6 +1,6 @@
-```
+
 mat-timepicker-hi is an easy library with timepicker. Fully wrote with TypeScript. This library is based on Angular Material.
-```
+
 
 ![Screenshot_1](https://user-images.githubusercontent.com/32700638/111035342-58470e80-841a-11eb-9060-706640bed0e9.png)
 
