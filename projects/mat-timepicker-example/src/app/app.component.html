@@ -1,7 +1,7 @@
 <div style="display: flex; gap: 100px; margin: 100px;">
-     <mat-timepicker (updateValue)="setValue($event)"
-                     [time]="initTime"></mat-timepicker>
 
-     <h1>{{newTime}}</h1>
+     <mat-timepicker [(time)]="initTime"></mat-timepicker>
+
+     <h1>{{initTime}}</h1>
 
 </div>

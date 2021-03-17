@@ -33,8 +33,7 @@ export class AppModule { }
 
 ## Using the component
 ```
-<mat-timepicker (updateValue)="setValue($event)"
-                     [time]="initTime"></mat-timepicker>
+<mat-timepicker [(time)]="initTime"></mat-timepicker>
 ```
 
 
@@ -49,20 +48,9 @@ import { Component } from '@angular/core';
 export class AppComponent {
 
   initTime = '11:57';
-  newTime: string;
-
-  setValue(event: string) {
-    if (event)
-      this.newTime = event;
-  }
+  
 }
 ```
-
-## @Input and @Output of mat-timepicker-hi
-
-| @Input        	| @Output      	| Type     	    |
-|-----------------|-----------------|---------------|
-| **time**        | (updateValue)  	| string        |
 
 
 ## License

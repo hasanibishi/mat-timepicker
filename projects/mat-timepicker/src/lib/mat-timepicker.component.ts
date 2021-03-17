@@ -10,8 +10,22 @@ export class MatTimepickerComponent implements OnInit, OnDestroy {
   timePicker = false;
   selectedTime: string;
 
-  @Input() time: any;
-  @Output() updateValue: EventEmitter<any> = new EventEmitter();
+  @Output()
+  timeChange = new EventEmitter<string>();
+
+  @Input()
+  get time() {
+    return this.selectedTime;
+  }
+
+  set time(val) {
+    this.selectedTime = val ? val : '00:00';
+    this.matService.setInitialTime(this.selectedTime);
+
+    this.matService.timeObs$.subscribe(resp => {
+      this.timeChange.emit(resp ? resp : this.selectedTime)
+    });
+  }
 
   constructor(
     private matService: MatTimepickerService
@@ -21,14 +35,7 @@ export class MatTimepickerComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.matService.timeObs$.subscribe(resp => {
-      this.updateValue.emit(resp)
-    });
-  }
 
-  ngOnChanges(change: SimpleChange) {
-    this.selectedTime = change['time'].currentValue ? change['time'].currentValue : '00:00';
-    this.matService.setInitialTime(this.selectedTime);
   }
 
   ngOnDestroy() {
